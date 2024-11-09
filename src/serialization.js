@@ -13,7 +13,7 @@ const storageKey = 'mainWorkspace';
  * @param {Blockly.Workspace} workspace Blockly workspace to save.
  */
 export const save = function (workspace) {
-  const data = Blockly.serialization.workspaces.save(workspace);
+  const data = Blockly.serialization.workspaces.save(workspace);    // 직렬화하여 저장
   window.localStorage?.setItem(storageKey, JSON.stringify(data));
 };
 
