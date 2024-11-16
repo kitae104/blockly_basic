@@ -1,25 +1,26 @@
-/**
- * @license
- * Copyright 2023 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
+// import { blocks } from './blocks/text';
+// import { forBlock } from './generators/javascript';
+// import { javascriptGenerator } from 'blockly/javascript';
 
 import * as Blockly from 'blockly';
-import { blocks } from './blocks/text';
-import { forBlock } from './generators/javascript';
-import { javascriptGenerator } from 'blockly/javascript';
-import { save, load } from './serialization';
-import { toolbox } from './toolbox';
+import {blocks} from './blocks/json';
+import {jsonGenerator} from './generators/json';
+import {save, load} from './serialization';
+import {toolbox} from './toolbox';
 import './index.css';
 
-// Register the blocks and generator with Blockly
+// Blockly로 블록과 생성기 등록
 Blockly.common.defineBlocks(blocks);
-Object.assign(javascriptGenerator.forBlock, forBlock);
+
+// Object.assign(javascriptGenerator.forBlock, forBlock);
 
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;
-const outputDiv = document.getElementById('output');
+
+// const outputDiv = document.getElementById('output');
+
 const blocklyDiv = document.getElementById('blocklyDiv');
+
 const ws = Blockly.inject(blocklyDiv, {
     toolbox,
     grid: { spacing: 20, length: 3, colour: '#ccc', snap: true },
@@ -43,16 +44,12 @@ const ws = Blockly.inject(blocklyDiv, {
     trashcan: true,
 });
 
-// This function resets the code and output divs, shows the
-// generated code from the workspace, and evals the code.
-// In a real application, you probably shouldn't use `eval`.
+//======================================================
+// 코드 실행 부분 - 코드생성기에 따라 이름 변경 확인 
+//======================================================
 const runCode = () => {
-    const code = javascriptGenerator.workspaceToCode(ws);
-    codeDiv.innerText = code;
-
-    outputDiv.innerHTML = '';
-
-    eval(code);
+    const code = jsonGenerator.workspaceToCode(ws); // 명칭 변경 확인!!
+    codeDiv.innerText = code;    
 };
 
 // Load the initial state from storage and run the code.

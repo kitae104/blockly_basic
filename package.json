@@ -24,6 +24,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "blockly": "^11.1.1"
+    "blockly": "^11.1.1",
+    "blockly_basic": "file:"
   }
 }
