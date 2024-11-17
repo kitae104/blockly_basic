@@ -1,9 +1,3 @@
-/**
- * @license
- * Copyright 2023 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import {Order} from 'blockly/javascript';
 
 // Export all the code generators for our custom blocks,

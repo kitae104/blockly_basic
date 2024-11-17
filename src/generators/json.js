@@ -7,6 +7,7 @@ const Order = {
     ATOMIC: 0,
 };
 
+// blockToCode() 함수 사용
 jsonGenerator.scrub_ = function (block, code, thisOnly) {
     const nextBlock = block.nextConnection && block.nextConnection.targetBlock();
     if (nextBlock && !thisOnly) {
@@ -59,6 +60,7 @@ jsonGenerator.forBlock['lists_create_with'] = function (block, generator) {
     return [codeString, Order.ATOMIC];
 };
 
+// statementToCode() 함수 사용 
 jsonGenerator.forBlock['object'] = function (block, generator) {
     const statementMembers = generator.statementToCode(block, 'MEMBERS');
     const code = '{\n' + statementMembers + '\n}';
